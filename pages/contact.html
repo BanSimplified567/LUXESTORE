@@ -33,60 +33,61 @@
                   <button onclick="window.location.href='./contact.html'">CONTACT US</button>
                </div>
                <section class="form-container">
-  <form id="contact" action="submit-url" method="POST">
-    <h2 class="contact-h2">Contact Us</h2>
+<form id="contact">
+  <h2 class="contact-h2">Contact Us</h2>
 
-    <div class="contact-input-group">
-      <div class="input-icon">
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required
-        />
-        <i class="fas fa-user contact-icons"></i>
-      </div>
-    </div>
-
-    <div class="contact-input-group">
-      <div class="input-icon">
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="Enter your phone number"
-          required
-        />
-        <i class="fas fa-phone contact-icons"></i>
-      </div>
-    </div>
-
-    <div class="contact-input-group">
-      <div class="input-icon">
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required
-        />
-        <i class="fas fa-envelope contact-icons"></i>
-      </div>
-    </div>
-
-    <div class="contact-input-group">
-      <textarea
-        id="message"
-        name="message"
-        rows="5"
-        placeholder="Enter your message"
+  <div class="contact-input-group">
+    <div class="input-icon">
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="Enter your name"
         required
-      ></textarea>
+      />
+      <i class="fas fa-user contact-icons"></i>
     </div>
+  </div>
 
-    <button class="contact-button-submit" type="submit">Send Message</button>
-  </form>
+  <div class="contact-input-group">
+    <div class="input-icon">
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="Enter your phone number"
+        required
+      />
+      <i class="fas fa-phone contact-icons"></i>
+    </div>
+  </div>
+
+  <div class="contact-input-group">
+    <div class="input-icon">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+      <i class="fas fa-envelope contact-icons"></i>
+    </div>
+  </div>
+
+  <div class="contact-input-group">
+    <textarea
+      id="message"
+      name="message"
+      rows="5"
+      placeholder="Enter your message"
+      required
+    ></textarea>
+  </div>
+
+  <button class="contact-button-submit" type="submit">Send Message</button>
+</form>
+
 </section>
       </div>
         <footer class="footer">
@@ -111,5 +112,49 @@
    </div>
   </div>
 </footer>
+<script>
+document.querySelector('form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the form from submitting initially
+
+  let isValid = true;
+
+  // Name validation
+  const name = document.getElementById('name').value;
+  if (!name.trim()) {
+    alert("Please enter your name");
+    isValid = false;
+  }
+
+  // Phone validation (Optional: Example for numeric validation)
+  const phone = document.getElementById('phone').value;
+  const phonePattern = /^[0-9]+$/;
+  if (!phonePattern.test(phone)) {
+    alert("Please enter a valid phone number");
+    isValid = false;
+  }
+
+  // Email validation
+  const email = document.getElementById('email').value;
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email");
+    isValid = false;
+  }
+
+  // Message validation
+  const message = document.getElementById('message').value;
+  if (!message.trim()) {
+    alert("Please enter a message");
+    isValid = false;
+  }
+
+  // If the form is valid, redirect to index.html
+  if (isValid) {
+    window.location.href = '../index.html';
+  }
+});
+
+
+</script>
    </body>
 </html>
